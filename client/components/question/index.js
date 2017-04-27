@@ -92,7 +92,7 @@ class Question extends Component {
     );
     const output = this.state.answered && (
       <div className="o-grid-container">
-        <div className="o-grid-row">
+        <div className="o-grid-row legend-container">
           <div data-o-grid-colspan="12 M4">
             <div className="legend">
               <svg width="10" viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg">
@@ -122,7 +122,7 @@ class Question extends Component {
               </svg>
               <p className="o-typography-lead--small">{this.props.country} answer</p>
             </div>
-            <p>
+            <p className="last-answer">
               People polled answered <strong>{this.props.countryAnswer}&#37;</strong>.
             </p>
           </div>

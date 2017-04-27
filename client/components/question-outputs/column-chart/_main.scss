@@ -65,19 +65,25 @@ svg.column-chart {
   }
 }
 
-div.legend {
-  display: flex;
-  align-items: center;
-  .legend-actual {
-    fill: $actual-color;
+div.legend-container {
+  padding-top: 0.3em;
+  .legend {
+    display: flex;
+    align-items: center;
+    .legend-actual {
+      fill: $actual-color;
+    }
+    .legend-user {
+      fill: #26747a;
+    }
+    .legend-country {
+      fill: #ff7f8a;
+    }
+    p.o-typography-lead--small {
+      margin: 0.3em 0 0.3em 7px;
+    }
   }
-  .legend-user {
-    fill: #26747a;
-  }
-  .legend-country {
-    fill: #ff7f8a;
-  }
-  p.o-typography-lead--small {
-    margin: 0.3em 0 0.3em 7px;
+  div p.last-answer {
+    margin-bottom: 0;
   }
 }

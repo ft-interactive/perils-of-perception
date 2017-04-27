@@ -47,7 +47,6 @@ class Overlay extends Component {
       'Denmark',
       'France',
       'Germany',
-      'Great Britain',
       'Hong Kong',
       'Hungary',
       'India',
