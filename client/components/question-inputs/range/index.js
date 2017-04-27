@@ -40,7 +40,7 @@ class Range extends Component {
     const number = isNaN(inputValue) ? this.props.max / 2 : inputValue;
     const rangeProgress = Math.round(100 / (this.props.max / number));
     const increment = (this.state.width - this.props.thumbSize) / 100;
-    const rangeOverlayPosition = (rangeProgress * increment) - 6;
+    const rangeOverlayPosition = (rangeProgress * increment) - 4;
 
     this.setState({
       value: number,
@@ -54,7 +54,7 @@ class Range extends Component {
     const width = this.rangeInput.offsetWidth;
     // const thumbSize = 28; // Make sure this matches the thumb styling in ./_main.scss
     const increment = (width - this.props.thumbSize) / 100;
-    const rangeOverlayPosition = (this.state.rangeProgress * increment) - 6;
+    const rangeOverlayPosition = (this.state.rangeProgress * increment) - 4;
 
     this.setState({
       width,
