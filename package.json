@@ -10,6 +10,7 @@
     "bower_components"
   ],
   "devDependencies": {
+    "@financial-times/g-deploy": "^3.0.12",
     "ansi-to-html": "^0.4.1",
     "axios": "^0.14.0",
     "babel-core": "^6.13.2",
@@ -79,8 +80,7 @@
   "scripts": {
     "build": "gulp",
     "clean": "rm -rf dist",
-    "deploy": "env $([[ -f .env ]] && cat .env) babel-node ./tasks/deploy.js",
-    "deploy:confirm": "env $([[ -f .env ]] && cat .env) babel-node ./tasks/deploy.js --confirm",
+    "deploy": "g-deploy --assets-prefix=https://ig.ft.com/v2/__assets/",
     "lint": "eslint --no-eslintrc --config=.eslintrc-ci.yml .",
     "postinstall": "bower install",
     "prebuild": "npm run clean",
