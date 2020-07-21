@@ -1,0 +1,35 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/project
+    docker:
+      - image: circleci/node:10-browsers
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: npm install
+      - run:
+          name: Build
+          command: npm run build
+      - store_artifacts:
+          name: Store artifacts (dist)
+          path: dist/
+      - deploy:
+          name: Deploy
+          command: |
+            if [ "$PREVIEW" == "true" ]
+            then
+              npm run deploy -- --confirm --preview
+            else
+              npm run deploy -- --confirm
+            fi
+      - run:
+          name: General QA tests
+          command: |
+            if [ $CIRCLE_BRANCH = "master" ]
+            then
+              npm run test
+            else
+              npm run test || echo "General QA tests failed. Continuing anyway"
+            fi
