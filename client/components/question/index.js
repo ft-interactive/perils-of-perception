@@ -32,9 +32,10 @@ class Question extends Component {
     });
 
     if (difference < 15) {
-      questionValue = difference === 0 ?
-        questionValue = 100 / this.props.questionsLength :
-        questionValue = (100 / this.props.questionsLength) * (1 - (difference / 15));
+      questionValue =
+        difference === 0
+          ? (questionValue = 100 / this.props.questionsLength)
+          : (questionValue = (100 / this.props.questionsLength) * (1 - difference / 15));
     } else {
       questionValue = 0;
     }
@@ -47,20 +48,20 @@ class Question extends Component {
     this.props.updateScore(questionValue);
 
     // POST response to server
-    fetch(`${this.props.endpoint}/response/`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        value,
-        submitted: Date.now(),
-        questionId: this.props.questionId,
-        meta: {
-          Country: this.props.country,
-        },
-      }),
-    }).then(res => console.log(res)).catch(e => console.error(e));
+    // fetch(`${this.props.endpoint}/response/`, {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: JSON.stringify({
+    //     value,
+    //     submitted: Date.now(),
+    //     questionId: this.props.questionId,
+    //     meta: {
+    //       Country: this.props.country,
+    //     },
+    //   }),
+    // }).then(res => console.log(res)).catch(e => console.error(e));
 
     this.props.updateProgress(this.props.questionIndex + 1);
   }
@@ -144,16 +145,16 @@ class Question extends Component {
 
     return (
       <div
-        ref={node => { this.node = node; }}
+        ref={node => {
+          this.node = node;
+        }}
         className={`question${activeClass}${answeredClass}`}
       >
         <h2 className="o-typography-subhead--crosshead">
           {this.props.questionIndex + 1}. {crosshead}
         </h2>
 
-        <p className="o-typography-lead--small">
-          {this.props.questionText}
-        </p>
+        <p className="o-typography-lead--small">{this.props.questionText}</p>
 
         {input}
 
